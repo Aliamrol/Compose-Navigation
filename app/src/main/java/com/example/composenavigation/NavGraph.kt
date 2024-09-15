@@ -19,19 +19,15 @@ fun SetupNavGraph(
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.Second.route + "/{name}" + "/{age}",
-            arguments = listOf(navArgument("name") {
+            route = Screen.Second.route + "/{person}",
+            arguments = listOf(navArgument("person") {
                 type = NavType.StringType
-            },
-                navArgument("age") {
-                    type = NavType.StringType
-                }
+            }
             )
         ) {
             SecondScreen(
                 navController = navController,
-                name = it.arguments?.getString("name").toString(),
-                age = it.arguments?.getString("age").toString()
+                person = it.arguments?.getString("person").toString()
             )
         }
     }

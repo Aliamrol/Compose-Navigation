@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.gson.Gson
 
 @Composable
 fun HomeScreen(
@@ -25,9 +26,15 @@ fun HomeScreen(
         Text(text = "My home screen")
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
-            val name = "Ali Amrol"
-            val age = "20"
-            navController.navigate(Screen.Second.withArgs(name, age))
+            val person = Person(
+                name = "Ali",
+                family = "Amrol",
+                age = 20,
+                phone = "09057510010"
+            )
+            val gson = Gson()
+            val personAsString = gson.toJson(person)
+            navController.navigate(Screen.Second.withArgs(personAsString))
         }) {
             Text("Go To Second Screen")
         }

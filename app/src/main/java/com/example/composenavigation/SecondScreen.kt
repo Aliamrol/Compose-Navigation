@@ -13,13 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.gson.Gson
 
 
 @Composable
 fun SecondScreen(
     navController: NavController,
-    name: String?,
-    age: String?
+    person: String,
 ) {
     Column(
         modifier = Modifier
@@ -27,7 +27,12 @@ fun SecondScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "$name has $age years old", color = Color.Magenta)
+        val gson = Gson()
+        val myPerson = gson.fromJson(person, Person::class.java)
+        Text(
+            text = "name : ${myPerson.name} , family:${myPerson.family} , age: ${myPerson.age} , phone: ${myPerson.phone}",
+            color = Color.Magenta
+        )
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
 
