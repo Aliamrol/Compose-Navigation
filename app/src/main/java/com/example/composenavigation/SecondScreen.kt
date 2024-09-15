@@ -17,7 +17,8 @@ import androidx.navigation.NavController
 
 @Composable
 fun SecondScreen(
-    navController: NavController
+    navController: NavController,
+    params: String
 ) {
     Column(
         modifier = Modifier
@@ -25,10 +26,18 @@ fun SecondScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "My Second Screen",color = Color.Magenta)
+        Text(text = params, color = Color.Magenta)
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
-            navController.navigate(route = Screen.Home.route)
+
+            /*can use this too
+            navController.popBackStack()
+           */
+            navController.navigate(route = Screen.Home.route) {
+                popUpTo(Screen.Home.route) {
+                    inclusive = true
+                }
+            }
         }) {
             Text("Go To Home Screen")
         }

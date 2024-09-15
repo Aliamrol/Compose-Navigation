@@ -3,8 +3,10 @@ package com.example.composenavigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 
 @Composable
 fun SetupNavGraph(
@@ -17,9 +19,12 @@ fun SetupNavGraph(
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.Second.route
+            route = Screen.Second.route + "/{params}", arguments = listOf(navArgument("params") {
+                type = NavType.StringType
+            })
         ) {
-            SecondScreen(navController = navController)
+            val params = it.arguments?.getString("params")
+            params?.let { SecondScreen(navController = navController, params = params) }
         }
     }
 }

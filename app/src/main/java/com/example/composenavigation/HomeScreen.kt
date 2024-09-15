@@ -18,15 +18,14 @@ fun HomeScreen(
     navController: NavController
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "My home screen")
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
-            navController.navigate(Screen.Second.route)
+            navController.navigate(Screen.Second.route + "/Ali Amrol") // slash is necessary
         }) {
             Text("Go To Second Screen")
         }
