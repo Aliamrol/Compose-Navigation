@@ -25,7 +25,9 @@ fun HomeScreen(
         Text(text = "My home screen")
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
-            navController.navigate(Screen.Second.route + "/Ali Amrol") // slash is necessary
+            val name = "Ali Amrol"
+            val age = "20"
+            navController.navigate(Screen.Second.route + "?name=$name" + "?age=$age")
         }) {
             Text("Go To Second Screen")
         }

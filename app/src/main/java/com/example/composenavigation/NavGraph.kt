@@ -19,12 +19,24 @@ fun SetupNavGraph(
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.Second.route + "/{params}", arguments = listOf(navArgument("params") {
+            route = Screen.Second.route + "?name={name}" + "?age={age}",
+            arguments = listOf(navArgument("name") {
                 type = NavType.StringType
-            })
+                defaultValue = "params is empty"
+                nullable = true
+            },
+                navArgument("age") {
+                    type = NavType.StringType
+                    defaultValue = "empty"
+                    nullable = true
+                }
+            )
         ) {
-            val params = it.arguments?.getString("params")
-            params?.let { SecondScreen(navController = navController, params = params) }
+            SecondScreen(
+                navController = navController,
+                name = it.arguments?.getString("name").toString(),
+                age = it.arguments?.getString("age").toString()
+            )
         }
     }
 }

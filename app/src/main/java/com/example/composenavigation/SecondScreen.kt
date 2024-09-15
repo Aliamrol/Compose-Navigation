@@ -18,7 +18,8 @@ import androidx.navigation.NavController
 @Composable
 fun SecondScreen(
     navController: NavController,
-    params: String
+    name: String?,
+    age: String?
 ) {
     Column(
         modifier = Modifier
@@ -26,7 +27,7 @@ fun SecondScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = params, color = Color.Magenta)
+        Text(text = "$name has $age years old", color = Color.Magenta)
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
 
