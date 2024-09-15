@@ -19,16 +19,12 @@ fun SetupNavGraph(
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.Second.route + "?name={name}" + "?age={age}",
+            route = Screen.Second.route + "/{name}" + "/{age}",
             arguments = listOf(navArgument("name") {
                 type = NavType.StringType
-                defaultValue = "params is empty"
-                nullable = true
             },
                 navArgument("age") {
                     type = NavType.StringType
-                    defaultValue = "empty"
-                    nullable = true
                 }
             )
         ) {

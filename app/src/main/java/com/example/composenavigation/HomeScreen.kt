@@ -27,7 +27,7 @@ fun HomeScreen(
         Button(onClick = {
             val name = "Ali Amrol"
             val age = "20"
-            navController.navigate(Screen.Second.route + "?name=$name" + "?age=$age")
+            navController.navigate(Screen.Second.withArgs(name, age))
         }) {
             Text("Go To Second Screen")
         }
